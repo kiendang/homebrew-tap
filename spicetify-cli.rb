@@ -11,12 +11,10 @@ class SpicetifyCli < Formula
 
     cd buildpath do
       system "go", "build", "-o", "spicetify"
-      bin.install "spicetify"
-      cp_r "./globals.d.ts", bin
-      cp_r "./jsHelper", bin
-      cp_r "./Themes", bin
-      cp_r "./Extensions", bin
-      cp_r "./CustomApps", bin
+
+      prefix.install "globals.d.ts", "jsHelper", "spicetify",
+                     "Themes", "Extensions", "CustomApps"
+      bin.install_symlink prefix/"spicetify"
     end
   end
 
